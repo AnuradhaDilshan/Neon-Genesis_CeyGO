@@ -17,39 +17,68 @@
 # Setup
 
 ### Flutter App - Client Side
-
 ```bash
 my_flutter_app/
 │
-├── android/               # Android native code
-│   ├── app/
-│   ├── gradle/
-│   └── src/
+├── android/               # Android native code for Android platform
+│   ├── app/               # Contains Android-specific application logic
+│   ├── gradle/            # Gradle build configuration files
+│   └── src/               # Android Java/Kotlin source files
 │
-├── ios/                   # iOS native code
-│   ├── Runner/
-│   ├── Flutter/
-│   └── Podfile
+├── ios/                   # iOS native code for iOS platform
+│   ├── Runner/            # Contains iOS app-specific logic
+│   ├── Flutter/           # Flutter build files for iOS
+│   └── Podfile            # CocoaPods dependencies for iOS
 │
 ├── lib/                   # Main Flutter application code
-│   ├── models/            # Data models
-│   ├── services/          # API or business logic services
-│   ├── screens/           # App screens and widgets
-│   ├── widgets/           # Reusable UI components 
-│   ├── main.dart          # Main entry point of the app
+│   ├── controller/        # Controllers managing app business logic (state, navigation)
+│   ├── model/             # Data models used across the app
+│   │   ├── custom_icons.dart  # Custom icons for the UI
+│   │   ├── place.dart         # Data model for places (tourist destinations)
+│   │   └── user.dart          # Data model for user information
+│   ├── service/           # Services for API calls, authentication, etc.
+│   │   ├── auth_helper.dart       # Helper functions for authentication
+│   │   ├── auth_service.dart      # Authentication service (login, signup)
+│   │   ├── favourite_service.dart # Manage favorite places
+│   │   ├── place_service.dart     # Service to handle place data and recommendations
+│   │   ├── previous_search_service.dart  # Service to manage previous searches
+│   │   └── visa_service.dart      # Service to handle visa processing workflow
+│   ├── screens/           # App screens (UI layout and widgets)
+│   ├── widgets/           # Reusable UI components (buttons, forms, etc.)
+│   ├── main.dart          # Main entry point of the app (initialization)
 │
-├── test/                  # Unit and widget tests
+├── ui/                    # UI components and screens
+│   ├── Home Screen/             # Home screen UI
+│   ├── Login Screen/            # Login screen UI
+│   ├── Navigation Bar/          # Custom navigation bar for the app
+│   ├── New Password Screen/     # UI for password reset process
+│   ├── Profile Screen/          # User profile screen
+│   ├── Profile Settings Screen/ # Profile settings screen
+│   ├── Routes Screen/           # UI for routes and navigation
+│   ├── Search Screen/           # Search feature UI
+│   │   └── search_screen.dart   # Dart file for search screen functionality
+│   ├── Sign Up Details/         # UI for additional sign-up details
+│   ├── SignUp Screen/           # Sign-up screen for new users
+│   ├── Slide Screen/            # Slide UI for onboarding or tutorials
+│   ├── Splash Screen/           # Initial splash screen
+│   ├── Srearch Place Screen/    # UI for place search functionality
+│   │   └── search_place_screen.dart  # Dart file for searching places
+│   ├── Visa Process Screen/     # UI for visa application process
+│   ├── Visa Status Screens/     # UI for checking visa status
+│   ├── Welcome Screen/          # Welcome screen after user logs in
+│   └── firebase_options.dart    # Firebase configuration options for app
 │
-├── build/                 # Generated build files
+├── test/                  # Unit and widget tests for the app
 │
-├── pubspec.yaml           # Project configuration and dependencies
+├── build/                 # Generated build files (compiled code)
 │
-├── pubspec.lock           # Version-locked dependencies
+├── pubspec.yaml           # Project configuration and third-party dependencies
 │
-├── README.md              # Project documentation
+├── pubspec.lock           # Version-locked dependencies to maintain consistency
 │
-└── .gitignore             # Files and directories to ignore in git
-
+├── README.md              # Project documentation (overview, setup, etc.)
+│
+└── .gitignore             # Files and directories to ignore in git version control
 ```
 - Clone the repository to your device
 
@@ -69,10 +98,10 @@ flutter pub get
 ```dart
 flutter run
 ```
+<hr>
 
 ### React - Admin Dashboard
 
-# React Project Structure
 ```bash
 my-react-app/
 │
@@ -146,3 +175,16 @@ npm i
 ```jsx
 npm start
 ```
+<hr>
+
+### Recommondation Engine API
+
+Using the following API link, you can view the recommonded places for your selected destination in JSON format (Hosted on a EC2 instance).
+
+```
+http://43.203.243.209/handle_get?name=galle
+```
+
+![alt text](image.png)
+
+<hr>
