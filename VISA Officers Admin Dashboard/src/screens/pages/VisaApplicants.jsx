@@ -1,109 +1,60 @@
-import React, { useState, useEffect } from "react";
-import { Box, Typography, useTheme } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import { Box } from "@mui/material";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
+import { mockDataContact } from "../../data/mockData";
+import { useTheme } from "@mui/material";
 import Header from "../../components/Header";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../firebase";
 
 const VisaApplicants = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [userData, setUserData] = useState([]);
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const visaApplicationsSnapshot = await getDocs(
-          collection(db, "visaApplications")
-        );
-        const userDataArray = [];
-
-        // Using Promise.all to handle all the asynchronous requests
-        const promises = visaApplicationsSnapshot.docs.map(async (visaDoc) => {
-          const personalInfoSnapshot = await getDocs(
-            collection(db, "visaApplications", visaDoc.id, "personalInfo")
-          );
-
-          personalInfoSnapshot.forEach((personalDoc) => {
-            const data = {
-              id: visaDoc.id, // Storing the main document ID
-              ...personalDoc.data(),
-            };
-            userDataArray.push(data);
-          });
-        });
-
-        await Promise.all(promises);
-
-        setUserData(userDataArray);
-      } catch (error) {
-        console.error("Error fetching documents:", error.message);
-      }
-    };
-
-    fetchUserData();
-  }, []);
 
   const columns = [
-    { field: "id", headerName: "ID" },
+    { field: "id", headerName: "ID", flex: 0.5 },
+    { field: "registerId", headerName: "Register ID" },
     {
-      field: "adultName",
-      headerName: "Adult Name",
+      field: "name",
+      headerName: "Name",
       flex: 1,
       cellClassName: "name-column--cell",
     },
     {
-      field: "adultDOBD",
-      headerName: "DOB Day",
+      field: "age",
+      headerName: "DOB",
       type: "number",
       headerAlign: "left",
       align: "left",
     },
     {
-      field: "adultDOBM",
-      headerName: "DOB Month",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "adultDOBY",
-      headerName: "DOB Year",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "adultPN",
-      headerName: "Phone Number",
-      flex: 1,
-    },
-    {
-      field: "adultNat",
+      field: "Nationality",
       headerName: "Nationality",
       flex: 1,
     },
     {
-      field: "childName",
-      headerName: "Child Name",
+      field: "email",
+      headerName: "Email",
       flex: 1,
     },
     {
-      field: "childRel",
-      headerName: "Child Relation",
+      field: "address",
+      headerName: "Address",
       flex: 1,
     },
     {
-      field: "passportImageUrl",
-      headerName: "Passport Image URL",
+      field: "city",
+      headerName: "City",
+      flex: 1,
+    },
+    {
+      field: "zipCode",
+      headerName: "ZipCode",
       flex: 1,
     },
   ];
 
   return (
     <Box m="20px">
-      <Header title="VISA APPLICANTS" subtitle="Managing the Visa Applicants" />
+      <Header title="VISA PAYMENTS" subtitle="List of Visa Paid Applicants" />
       <Box
         m="40px 0 0 0"
         height="67vh"
@@ -128,12 +79,16 @@ const VisaApplicants = () => {
             borderTop: "none",
             backgroundColor: colors.yellowAccent[700],
           },
-          "& .MuiCheckbox-root": {
-            color: `${colors.redAccent[200]} !important`,
+          "& .MuiDataGrid-toolbarContainer .MuiButton-Text": {
+            color: `${colors.grey[100]} !important`,
           },
         }}
       >
-        <DataGrid checkboxSelection rows={userData} columns={columns} />
+        <DataGrid
+          rows={mockDataContact}
+          columns={columns}
+          components={{ Toolbar: GridToolbar }}
+        />
       </Box>
     </Box>
   );
