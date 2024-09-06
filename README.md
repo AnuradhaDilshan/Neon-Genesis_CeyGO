@@ -1,70 +1,148 @@
-# Getting Started with Create React App
+# Team Neon Genesis - CeyGo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![CeyGo Tech Stack.png](CeyGo_Tech_Stack.png)
 
-## Available Scripts
+`CeyGo` is a travel guide app designed to attract tourists to our tropical paradise, Sri Lanka.
 
-In the project directory, you can run:
 
-### `npm start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- `Flutter` 3.24.1
+- `Dart` 3.5.1
+- `React` 18.3.1
+- `Node` 20.17.0
+- `Scikit-learn` 1.5.1
+- `MySQL` 8.0.39
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Setup
 
-### `npm test`
+### Flutter App - Client Side
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+my_flutter_app/
+│
+├── android/               # Android native code
+│   ├── app/
+│   ├── gradle/
+│   └── src/
+│
+├── ios/                   # iOS native code
+│   ├── Runner/
+│   ├── Flutter/
+│   └── Podfile
+│
+├── lib/                   # Main Flutter application code
+│   ├── models/            # Data models
+│   ├── services/          # API or business logic services
+│   ├── screens/           # App screens and widgets
+│   ├── widgets/           # Reusable UI components 
+│   ├── main.dart          # Main entry point of the app
+│
+├── test/                  # Unit and widget tests
+│
+├── build/                 # Generated build files
+│
+├── pubspec.yaml           # Project configuration and dependencies
+│
+├── pubspec.lock           # Version-locked dependencies
+│
+├── README.md              # Project documentation
+│
+└── .gitignore             # Files and directories to ignore in git
 
-### `npm run build`
+```
+- Clone the repository to your device
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+git clone https://github.com/DulaknaRandil/Neon-Genesis_CeyGO_Mobile-Application.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Open the project & Install the dependencies by
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```dart
+flutter pub get
+```
 
-### `npm run eject`
+- Load the secrets to the `.env` file (Secret keys are located in a separate document).
+- Run the Flutter app by
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```dart
+flutter run
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### React - Admin Dashboard
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# React Project Structure
+```bash
+my-react-app/
+│
+├── public/                # Static files, such as index.html
+│   ├── favicon.ico        # App favicon
+│   ├── index.html         # Main HTML file
+│   └── manifest.json      # Web app manifest
+│
+├── src/                   # Main application code
+│   ├── assets/            # Images, fonts, etc. 
+│   ├── components/        # Reusable components
+│   │   ├── Button.js      # Example reusable button component
+│   │   ├── BarChart.jsx        # Bar chart visualization component
+│   │   ├── Geography.jsx       # Component for geography-based data display
+│   │   ├── Header.jsx          # Header component for the app
+│   │   ├── LineChart.jsx       # Line chart visualization component
+│   │   ├── PieChart.jsx        # Pie chart visualization component
+│   │   ├── ProgressCircle.jsx  # Circular progress indicator component
+│   │   └── StatBox.jsx         # Statistics box component for displaying data
+│   ├── pages/             # Pages of the application 
+│   │   ├── Home.js        # Example home page component
+│   │   ├── Bar.jsx             # Bar chart data page
+│   │   ├── Geo.jsx             # Geographical data page
+│   │   ├── Interpol.jsx        # Interpol API verification page
+│   │   ├── Line.jsx            # Line chart data page
+│   │   ├── Pie.jsx             # Pie chart data page
+│   │   ├── VisaApplication.jsx # Page for visa application submission
+│   │   └── VisaPayments.jsx    # Page for managing visa payments
+│   ├── screens/           # Screens within the application 
+│   │   ├── dashboard/
+│   │   │   ├── Dashboard.jsx    # Main dashboard screen
+│   │   └── Login.jsx           # Login screen
+│   ├── global/            # Global components (e.g., navigation, layout)
+│   │   ├── SideBar.jsx         # Sidebar navigation component
+│   │   └── TopBar.jsx          # Top bar navigation component
+│   ├── services/          # API calls or business logic 
+│   ├── hooks/             # Custom React hooks 
+│   ├── context/           # Context API for state management 
+│   ├── data/              # Static or fetched data 
+│   ├── App.js             # Main app component
+│   ├── firebase.js        # Firebase configuration
+│   ├── index.js           # Entry point of the app
+│   ├── index.css          # Global styles
+│   └── theme.js           # Theme customization for the app
+│
+├── node_modules/          # Installed dependencies 
+│
+├── package.json           # Project configuration and dependencies
+│
+├── package-lock.json      # Version-locked dependencies 
+│
+├── .gitignore             # Files and directories to ignore in git
+│
+├── README.md              # Project documentation
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Clone the repository to your device
 
-## Learn More
+```
+https://github.com/AnuradhaDilshan/Neon-Genesis_CeyGO_Admin-Dashboard.git
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Open the project & Install the dependencies by
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```jsx
+npm i
+```
 
-### Code Splitting
+- Run the app by
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```jsx
+npm start
+```
